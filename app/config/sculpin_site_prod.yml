@@ -1,0 +1,13 @@
+# The contents of this file are parsed and made available as
+# via `site.*`. So for example, {{ site.title }} can be used
+# in a template to get the contents of the `title` key.
+title: PHP Extension Book
+subtitle: Extension Cookbook!
+
+twitter: c9s
+github: c9s
+
+url: https://c9s.github.io/extbook/
+# Insert your disqus shortname
+#disqus:
+#    shortname:
