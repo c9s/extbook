@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://c9s.github.io/extbook/</loc>
+    <loc>https://c9s.github.io/extbook</loc>
     <lastmod>2015-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
     <url>
-    <loc>https://c9s.github.io/extbook//blog/2013/02/04/highlight</loc>
+    <loc>https://c9s.github.io/extbook/blog/2013/02/04/highlight</loc>
     <lastmod>2013-02-04T00:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
-    <loc>https://c9s.github.io/extbook//blog/2012/11/27/lorem-ipsum</loc>
+    <loc>https://c9s.github.io/extbook/blog/2012/11/27/lorem-ipsum</loc>
     <lastmod>2012-11-27T00:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
-    <loc>https://c9s.github.io/extbook//blog/2012/11/26/and-then-there-was-textile-support</loc>
+    <loc>https://c9s.github.io/extbook/blog/2012/11/26/and-then-there-was-textile-support</loc>
     <lastmod>2012-11-26T00:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
-    <loc>https://c9s.github.io/extbook//blog/2012/10/16/balrog</loc>
+    <loc>https://c9s.github.io/extbook/blog/2012/10/16/balrog</loc>
     <lastmod>2012-10-16T00:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
-    <loc>https://c9s.github.io/extbook//blog/2012/09/29/symfony-live-hacking-day</loc>
+    <loc>https://c9s.github.io/extbook/blog/2012/09/29/symfony-live-hacking-day</loc>
     <lastmod>2012-09-29T00:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
     <url>
-    <loc>https://c9s.github.io/extbook//blog/2011/12/20/happy-birthday-sculpin</loc>
+    <loc>https://c9s.github.io/extbook/blog/2011/12/20/happy-birthday-sculpin</loc>
     <lastmod>2011-12-20T00:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
