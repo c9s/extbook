@@ -1,10 +1,6 @@
 #!/bin/bash
 
-if [ $# -ne 1 ]; then
-    MSG=$(git log --oneline -1)
-fi
-MSG="$1"
-
+MSG=$(git log --oneline -1)
 set -e
 
 rm -rf output_prod
