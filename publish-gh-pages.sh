@@ -13,7 +13,7 @@ sculpin generate --env=prod
 git stash
 git checkout gh-pages
 
-rsync -av output_prod/ ./
+rsync -a --update -v output_prod/ ./
 rm -rf output_*
 
 git add *
