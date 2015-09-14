@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title><![CDATA[PHP Extension Book]]></title>
-    <link href="/blog/tags/symfony live.xml" rel="self"/>
-    <link href="/"/>
-    <updated>2015-09-14T13:36:36+08:00</updated>
-    <id>/</id>
+    <link href="https://c9s.github.io/extbook//blog/tags/symfony live.xml" rel="self"/>
+    <link href="https://c9s.github.io/extbook//"/>
+    <updated>2015-09-14T13:43:53+08:00</updated>
+    <id>https://c9s.github.io/extbook//</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[Symfony Live Hacking Day!]]></title>
-            <link href="/blog/2012/09/29/symfony-live-hacking-day"/>
+            <link href="https://c9s.github.io/extbook//blog/2012/09/29/symfony-live-hacking-day"/>
             <updated>2012-09-29T00:00:00+08:00</updated>
-            <id>/blog/2012/09/29/symfony-live-hacking-day</id>
+            <id>https://c9s.github.io/extbook//blog/2012/09/29/symfony-live-hacking-day</id>
             <content type="html"><![CDATA[<p>Fun times at the Symfony Live San Francisco 2012 Hacking Day! Code
 was hacked and pizza was had. Some pics of the conference are
 available on the <a href="https://www.facebook.com/media/set/?set=a.450514941665306.112810.129739647076172">Sensio Labs Facebook page</a>.</p>

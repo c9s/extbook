@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /blog/tags/
 Disallow: /blog/categories/
 
-Sitemap: /sitemap.xml
+Sitemap: https://c9s.github.io/extbook//sitemap.xml

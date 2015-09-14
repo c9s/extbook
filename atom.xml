@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title><![CDATA[PHP Extension Book]]></title>
-    <link href="/atom.xml" rel="self"/>
-    <link href="/"/>
-    <updated>2015-09-14T13:36:36+08:00</updated>
-    <id>/</id>
+    <link href="https://c9s.github.io/extbook//atom.xml" rel="self"/>
+    <link href="https://c9s.github.io/extbook//"/>
+    <updated>2015-09-14T13:43:53+08:00</updated>
+    <id>https://c9s.github.io/extbook//</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[Syntax Highlighting]]></title>
-            <link href="/blog/2013/02/04/highlight"/>
+            <link href="https://c9s.github.io/extbook//blog/2013/02/04/highlight"/>
             <updated>2013-02-04T00:00:00+08:00</updated>
-            <id>/blog/2013/02/04/highlight</id>
+            <id>https://c9s.github.io/extbook//blog/2013/02/04/highlight</id>
             <content type="html"><![CDATA[<p>You're all programmers, right? And you're writing code snippets on your Sculpin
 powered blog? Yeah. So you want some highlighting with your static site generation?
 Here you go!</p>
@@ -50,9 +50,9 @@ for suggesting it. :)</p>
         </entry>
             <entry>
             <title type="html"><![CDATA[Lorem Ipsum]]></title>
-            <link href="/blog/2012/11/27/lorem-ipsum"/>
+            <link href="https://c9s.github.io/extbook//blog/2012/11/27/lorem-ipsum"/>
             <updated>2012-11-27T00:00:00+08:00</updated>
-            <id>/blog/2012/11/27/lorem-ipsum</id>
+            <id>https://c9s.github.io/extbook//blog/2012/11/27/lorem-ipsum</id>
             <content type="html"><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat congue
 lacus vel convallis. Cras nisi urna, ultrices non semper quis, ultricies sit
 amet est. Donec nunc velit, consequat a pulvinar a, eleifend id leo. Curabitur
@@ -98,18 +98,18 @@ aliquam id.</p>
         </entry>
             <entry>
             <title type="html"><![CDATA[And Then There Was Textile Support]]></title>
-            <link href="/blog/2012/11/26/and-then-there-was-textile-support"/>
+            <link href="https://c9s.github.io/extbook//blog/2012/11/26/and-then-there-was-textile-support"/>
             <updated>2012-11-26T00:00:00+08:00</updated>
-            <id>/blog/2012/11/26/and-then-there-was-textile-support</id>
+            <id>https://c9s.github.io/extbook//blog/2012/11/26/and-then-there-was-textile-support</id>
             <content type="html"><![CDATA[<p><a href="https://github.com/netcarver/textile">Textile</a> support was added on November 26th, 2012. Markdown is great, but so is choice. More converters for all!</p>
 
 <p>In honor of this milestone, this post is written in <strong>Textile</strong>.</p>]]></content>
         </entry>
             <entry>
             <title type="html"><![CDATA[Balrog]]></title>
-            <link href="/blog/2012/10/16/balrog"/>
+            <link href="https://c9s.github.io/extbook//blog/2012/10/16/balrog"/>
             <updated>2012-10-16T00:00:00+08:00</updated>
-            <id>/blog/2012/10/16/balrog</id>
+            <id>https://c9s.github.io/extbook//blog/2012/10/16/balrog</id>
             <content type="html"><![CDATA[<p>Found out about <a href="http://github.com/igorw/balrog">Balrog</a> today! It looks
 like a really nice micro static site generator. Maybe Sculpin and Balrog
 can be friends?</p>
@@ -117,9 +117,9 @@ can be friends?</p>
         </entry>
             <entry>
             <title type="html"><![CDATA[Symfony Live Hacking Day!]]></title>
-            <link href="/blog/2012/09/29/symfony-live-hacking-day"/>
+            <link href="https://c9s.github.io/extbook//blog/2012/09/29/symfony-live-hacking-day"/>
             <updated>2012-09-29T00:00:00+08:00</updated>
-            <id>/blog/2012/09/29/symfony-live-hacking-day</id>
+            <id>https://c9s.github.io/extbook//blog/2012/09/29/symfony-live-hacking-day</id>
             <content type="html"><![CDATA[<p>Fun times at the Symfony Live San Francisco 2012 Hacking Day! Code
 was hacked and pizza was had. Some pics of the conference are
 available on the <a href="https://www.facebook.com/media/set/?set=a.450514941665306.112810.129739647076172">Sensio Labs Facebook page</a>.</p>
@@ -127,9 +127,9 @@ available on the <a href="https://www.facebook.com/media/set/?set=a.450514941665
         </entry>
             <entry>
             <title type="html"><![CDATA[Happy Birthday Sculpin!]]></title>
-            <link href="/blog/2011/12/20/happy-birthday-sculpin"/>
+            <link href="https://c9s.github.io/extbook//blog/2011/12/20/happy-birthday-sculpin"/>
             <updated>2011-12-20T00:00:00+08:00</updated>
-            <id>/blog/2011/12/20/happy-birthday-sculpin</id>
+            <id>https://c9s.github.io/extbook//blog/2011/12/20/happy-birthday-sculpin</id>
             <content type="html"><![CDATA[<p>The first commit to the Sculpin repository was made on December 20th, 2011.
 What a trip since then!</p>
 

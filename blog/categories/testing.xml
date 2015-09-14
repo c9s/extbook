@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title><![CDATA[PHP Extension Book]]></title>
-    <link href="/blog/categories/testing.xml" rel="self"/>
-    <link href="/"/>
-    <updated>2015-09-14T13:36:36+08:00</updated>
-    <id>/</id>
+    <link href="https://c9s.github.io/extbook//blog/categories/testing.xml" rel="self"/>
+    <link href="https://c9s.github.io/extbook//"/>
+    <updated>2015-09-14T13:43:53+08:00</updated>
+    <id>https://c9s.github.io/extbook//</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[Lorem Ipsum]]></title>
-            <link href="/blog/2012/11/27/lorem-ipsum"/>
+            <link href="https://c9s.github.io/extbook//blog/2012/11/27/lorem-ipsum"/>
             <updated>2012-11-27T00:00:00+08:00</updated>
-            <id>/blog/2012/11/27/lorem-ipsum</id>
+            <id>https://c9s.github.io/extbook//blog/2012/11/27/lorem-ipsum</id>
             <content type="html"><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat congue
 lacus vel convallis. Cras nisi urna, ultrices non semper quis, ultricies sit
 amet est. Donec nunc velit, consequat a pulvinar a, eleifend id leo. Curabitur

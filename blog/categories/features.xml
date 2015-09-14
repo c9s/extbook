@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title><![CDATA[PHP Extension Book]]></title>
-    <link href="/blog/categories/features.xml" rel="self"/>
-    <link href="/"/>
-    <updated>2015-09-14T13:36:36+08:00</updated>
-    <id>/</id>
+    <link href="https://c9s.github.io/extbook//blog/categories/features.xml" rel="self"/>
+    <link href="https://c9s.github.io/extbook//"/>
+    <updated>2015-09-14T13:43:53+08:00</updated>
+    <id>https://c9s.github.io/extbook//</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[Syntax Highlighting]]></title>
-            <link href="/blog/2013/02/04/highlight"/>
+            <link href="https://c9s.github.io/extbook//blog/2013/02/04/highlight"/>
             <updated>2013-02-04T00:00:00+08:00</updated>
-            <id>/blog/2013/02/04/highlight</id>
+            <id>https://c9s.github.io/extbook//blog/2013/02/04/highlight</id>
             <content type="html"><![CDATA[<p>You're all programmers, right? And you're writing code snippets on your Sculpin
 powered blog? Yeah. So you want some highlighting with your static site generation?
 Here you go!</p>
@@ -50,9 +50,9 @@ for suggesting it. :)</p>
         </entry>
             <entry>
             <title type="html"><![CDATA[And Then There Was Textile Support]]></title>
-            <link href="/blog/2012/11/26/and-then-there-was-textile-support"/>
+            <link href="https://c9s.github.io/extbook//blog/2012/11/26/and-then-there-was-textile-support"/>
             <updated>2012-11-26T00:00:00+08:00</updated>
-            <id>/blog/2012/11/26/and-then-there-was-textile-support</id>
+            <id>https://c9s.github.io/extbook//blog/2012/11/26/and-then-there-was-textile-support</id>
             <content type="html"><![CDATA[<p><a href="https://github.com/netcarver/textile">Textile</a> support was added on November 26th, 2012. Markdown is great, but so is choice. More converters for all!</p>
 
 <p>In honor of this milestone, this post is written in <strong>Textile</strong>.</p>]]></content>
