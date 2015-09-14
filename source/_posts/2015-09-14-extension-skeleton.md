@@ -12,7 +12,6 @@ To create an extension, you will need at least three files:
 Here is a initial content of `config.m4`:
 
 ~~~m4
-dnl vim:sw=2:ts=2:sts=2:
 PHP_ARG_ENABLE(foo, whether to enable foo extension support,
   [--enable-foo Enable foo extension support])
 PHP_NEW_EXTENSION(foo, php_foo.c, $ext_shared)
@@ -42,8 +41,8 @@ PHP_FUNCTION(foo_hello);
 #endif
 ~~~
 
-
-here is the content of `php_foo.c`:
+Here is the content of `php_foo.c`, a minimal extension source code must contains a `zend_module_entry`,
+And you usually need to define `zend_function_entry` to declare your extension functions:
 
 ~~~c
 #include "php_foo.h"
@@ -66,11 +65,11 @@ zend_module_entry foo_module_entry = {
     STANDARD_MODULE_HEADER,
 #endif
     "Foo",
-    foo_functions,
+    foo_functions, // where you define your functions
     PHP_MINIT(foo),
     PHP_MSHUTDOWN(foo),
-    NULL,
-    NULL,
+    NULL, // PHP_RINIT(foo)
+    NULL, // PHP_RSHUTDOWN(foo)
     PHP_MINFO(foo),
 #if ZEND_MODULE_API_NO >= 20010901
     "0.1",
@@ -94,4 +93,13 @@ PHP_FUNCTION(foo_hello) {
 }
 
 ~~~
+
+Compile it!
+
+~~~sh
+phpize
+./configure
+make
+~~~
+
 
