@@ -1,9 +1,9 @@
 #!/bin/bash
 
 if [ $# -ne 1 ]; then
-    echo "usage: ./publish.sh \"commit message\""
-    exit 1;
+    MSG=$(git log --oneline -1)
 fi
+MSG="$1"
 
 set -e
 
@@ -17,7 +17,7 @@ rsync -a --update -v output_prod/ ./
 rm -rf output_*
 
 git add *
-git commit -m "$1"
+git commit -m "$MSG"
 git push origin gh-pages
 
 git checkout master
