@@ -1,0 +1,20 @@
+@import "bootstrap";
+
+.well {
+  background: none;
+  box-shadow: none;
+
+  background: none;
+  box-shadow: none;
+  border: none;
+  border-top: 15px solid $brand-primary;
+  border-radius: 0;
+  margin-top: 20px;
+  padding: 0;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.sidebar {
+  border-left: 15px solid $brand-primary;
+}
