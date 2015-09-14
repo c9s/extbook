@@ -5,6 +5,9 @@ if [ $# -ne 1 ]; then
     exit 1;
 fi
 
+set -e
+
+rm -rf output_prod
 sculpin generate --env=prod
 
 git stash
