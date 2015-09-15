@@ -3,14 +3,14 @@
     <title><![CDATA[PHP Extension Book]]></title>
     <link href="https://c9s.github.io/extbook/atom.xml" rel="self"/>
     <link href="https://c9s.github.io/extbook/"/>
-    <updated>2015-09-15T17:02:32+08:00</updated>
+    <updated>2015-09-15T17:06:53+08:00</updated>
     <id>https://c9s.github.io/extbook/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[Defining ARG_INFO]]></title>
-            <link href="https://c9s.github.io/extbook/_posts/args-info.md"/>
-            <updated>2015-09-15T17:02:32+08:00</updated>
-            <id>https://c9s.github.io/extbook/_posts/args-info.md</id>
+            <link href="https://c9s.github.io/extbook/args-info"/>
+            <updated>2015-09-05T00:00:00+08:00</updated>
+            <id>https://c9s.github.io/extbook/args-info</id>
             <content type="html"><![CDATA[<p>The code below presents: <code>($environment, $response)</code></p>
 
 <pre><code class="c">// ZEND_BEGIN_ARG_INFO_EX(name, _unused, return_reference, required_num_args)
@@ -31,10 +31,37 @@ ZEND_END_ARG_INFO()
 ]]></content>
         </entry>
             <entry>
+            <title type="html"><![CDATA[Parse Callable Parameter]]></title>
+            <link href="https://c9s.github.io/extbook/parse-callable-parameter"/>
+            <updated>2015-09-04T00:00:00+08:00</updated>
+            <id>https://c9s.github.io/extbook/parse-callable-parameter</id>
+            <content type="html"><![CDATA[<p>The code below is from php-src (<code>ext/standard/basic_functions.c</code>)</p>
+
+<pre><code class="c">    zval *retval_ptr = NULL;
+    zend_fcall_info fci;
+    zend_fcall_info_cache fci_cache;
+
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "f*", &amp;fci, &amp;fci_cache, &amp;fci.params, &amp;fci.param_count) == FAILURE) {
+        return;
+    }
+
+    fci.retval_ptr_ptr = &amp;retval_ptr;
+
+    if (zend_call_function(&amp;fci, &amp;fci_cache TSRMLS_CC) == SUCCESS &amp;&amp; fci.retval_ptr_ptr &amp;&amp; *fci.retval_ptr_ptr) {
+        COPY_PZVAL_TO_ZVAL(*return_value, *fci.retval_ptr_ptr);
+    }
+
+    if (fci.params) {
+        efree(fci.params);
+    }
+</code></pre>
+]]></content>
+        </entry>
+            <entry>
             <title type="html"><![CDATA[call_user_function_ex]]></title>
-            <link href="https://c9s.github.io/extbook/_posts/call-user-function.md"/>
-            <updated>2015-09-15T17:02:32+08:00</updated>
-            <id>https://c9s.github.io/extbook/_posts/call-user-function.md</id>
+            <link href="https://c9s.github.io/extbook/call-user-function"/>
+            <updated>2015-09-03T00:00:00+08:00</updated>
+            <id>https://c9s.github.io/extbook/call-user-function</id>
             <content type="html"><![CDATA[<pre><code class="c">    zval *retval_ptr;
     zval ***args;
     int status;
@@ -71,9 +98,27 @@ ZEND_END_ARG_INFO()
         </entry>
             <entry>
             <title type="html"><![CDATA[Extension Skeleton]]></title>
-            <link href="https://c9s.github.io/extbook/_posts/extension-skeleton.md"/>
-            <updated>2015-09-15T17:02:32+08:00</updated>
-            <id>https://c9s.github.io/extbook/_posts/extension-skeleton.md</id>
+            <link href="https://c9s.github.io/extbook/invalid-library"/>
+            <updated>2015-09-02T00:00:00+08:00</updated>
+            <id>https://c9s.github.io/extbook/invalid-library</id>
+            <content type="html"><![CDATA[<p>If you encountered this error while running <code>make test</code> or loading extension:</p>
+
+<pre><code>PHP Warning:  PHP Startup: Invalid library (maybe not a PHP library) 'phpsgi.so' in Unknown on line 0
+</code></pre>
+
+<p>Be sure to check you defined this:</p>
+
+<pre><code class="c">#if COMPILE_DL_FOO
+ZEND_GET_MODULE(foo)
+#endif
+</code></pre>
+]]></content>
+        </entry>
+            <entry>
+            <title type="html"><![CDATA[Extension Skeleton]]></title>
+            <link href="https://c9s.github.io/extbook/extension-skeleton"/>
+            <updated>2015-09-01T00:00:00+08:00</updated>
+            <id>https://c9s.github.io/extbook/extension-skeleton</id>
             <content type="html"><![CDATA[<p>To create an extension, you will need at least three files:</p>
 
 <ul>
@@ -168,51 +213,6 @@ PHP_FUNCTION(foo_hello) {
 <pre><code class="sh">phpize
 ./configure
 make
-</code></pre>
-]]></content>
-        </entry>
-            <entry>
-            <title type="html"><![CDATA[Extension Skeleton]]></title>
-            <link href="https://c9s.github.io/extbook/_posts/invalid-library.md"/>
-            <updated>2015-09-15T17:02:32+08:00</updated>
-            <id>https://c9s.github.io/extbook/_posts/invalid-library.md</id>
-            <content type="html"><![CDATA[<p>If you encountered this error while running <code>make test</code> or loading extension:</p>
-
-<pre><code>PHP Warning:  PHP Startup: Invalid library (maybe not a PHP library) 'phpsgi.so' in Unknown on line 0
-</code></pre>
-
-<p>Be sure to check you defined this:</p>
-
-<pre><code class="c">#if COMPILE_DL_FOO
-ZEND_GET_MODULE(foo)
-#endif
-</code></pre>
-]]></content>
-        </entry>
-            <entry>
-            <title type="html"><![CDATA[Parse Callable Parameter]]></title>
-            <link href="https://c9s.github.io/extbook/_posts/parse-callable-parameter.md"/>
-            <updated>2015-09-15T17:02:32+08:00</updated>
-            <id>https://c9s.github.io/extbook/_posts/parse-callable-parameter.md</id>
-            <content type="html"><![CDATA[<p>The code below is from php-src (<code>ext/standard/basic_functions.c</code>)</p>
-
-<pre><code class="c">    zval *retval_ptr = NULL;
-    zend_fcall_info fci;
-    zend_fcall_info_cache fci_cache;
-
-    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "f*", &amp;fci, &amp;fci_cache, &amp;fci.params, &amp;fci.param_count) == FAILURE) {
-        return;
-    }
-
-    fci.retval_ptr_ptr = &amp;retval_ptr;
-
-    if (zend_call_function(&amp;fci, &amp;fci_cache TSRMLS_CC) == SUCCESS &amp;&amp; fci.retval_ptr_ptr &amp;&amp; *fci.retval_ptr_ptr) {
-        COPY_PZVAL_TO_ZVAL(*return_value, *fci.retval_ptr_ptr);
-    }
-
-    if (fci.params) {
-        efree(fci.params);
-    }
 </code></pre>
 ]]></content>
         </entry>

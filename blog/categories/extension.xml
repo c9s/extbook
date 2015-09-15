@@ -3,14 +3,14 @@
     <title><![CDATA[PHP Extension Book]]></title>
     <link href="https://c9s.github.io/extbook/blog/categories/extension.xml" rel="self"/>
     <link href="https://c9s.github.io/extbook/"/>
-    <updated>2015-09-15T17:02:32+08:00</updated>
+    <updated>2015-09-15T17:06:53+08:00</updated>
     <id>https://c9s.github.io/extbook/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[Extension Skeleton]]></title>
-            <link href="https://c9s.github.io/extbook/_posts/extension-skeleton.md"/>
-            <updated>2015-09-15T17:02:32+08:00</updated>
-            <id>https://c9s.github.io/extbook/_posts/extension-skeleton.md</id>
+            <link href="https://c9s.github.io/extbook/extension-skeleton"/>
+            <updated>2015-09-01T00:00:00+08:00</updated>
+            <id>https://c9s.github.io/extbook/extension-skeleton</id>
             <content type="html"><![CDATA[<p>To create an extension, you will need at least three files:</p>
 
 <ul>

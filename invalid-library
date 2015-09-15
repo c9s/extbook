@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Category Archive "extension" &mdash; PHP Extension Book &mdash; Extension Cookbook!</title>
+        <title>Extension Skeleton &mdash; PHP Extension Book &mdash; Extension Cookbook!</title>
         <meta charset="utf-8">
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="alternate" type="application/atom+xml" href="https://c9s.github.io/extbook/blog/categories/extension.xml" title="PHP Extension Book 'extension' category feed" />
-    <meta name="robots" content="noindex, follow">
+            <meta name="robots" content="index, follow">
 
 
         
@@ -34,15 +33,39 @@
 
                 <div class="col-md-9">
 
-                                        <h2>"extension"</h2>
-        <h3>September 2015</h3>
-<article>
-  <div><a href="https://c9s.github.io/extbook/extension-skeleton">Extension Skeleton</a></div>
-</article>
+                        <article>
+        <header>
+            <h2>Extension Skeleton <small>post</small></h2>
+        </header>
+        <div>
+            <p>If you encountered this error while running <code>make test</code> or loading extension:</p>
 
-<div>
-</div>
-                    
+<pre><code>PHP Warning:  PHP Startup: Invalid library (maybe not a PHP library) 'phpsgi.so' in Unknown on line 0
+</code></pre>
+
+<p>Be sure to check you defined this:</p>
+
+<pre><code class="c">#if COMPILE_DL_FOO
+ZEND_GET_MODULE(foo)
+#endif
+</code></pre>
+
+        </div>
+                    <p class="categories">
+            Categories:
+                        <a href="https://c9s.github.io/extbook/blog/categories/troubleshooting">troubleshooting</a>                        </p>
+                
+                    <nav class="article">
+                <ul>
+                                            <li>Next: <a class="next" href="https://c9s.github.io/extbook/call-user-function" title="call_user_function_ex"><span class="title">call_user_function_ex</span></a></li>
+                                                                <li>Previous: <a class="previous" href="https://c9s.github.io/extbook/extension-skeleton" title="Extension Skeleton"><span class="title">Extension Skeleton</span></a></li>
+                                    </ul>
+            </nav>
+            </article>
+
+
+
+
                 </div>
 
                 <div class="col-md-3 sidebar">

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Category Archive "extension" &mdash; PHP Extension Book &mdash; Extension Cookbook!</title>
+        <title>Parse Callable Parameter &mdash; PHP Extension Book &mdash; Extension Cookbook!</title>
         <meta charset="utf-8">
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="alternate" type="application/atom+xml" href="https://c9s.github.io/extbook/blog/categories/extension.xml" title="PHP Extension Book 'extension' category feed" />
-    <meta name="robots" content="noindex, follow">
+            <meta name="robots" content="index, follow">
 
 
         
@@ -34,15 +33,45 @@
 
                 <div class="col-md-9">
 
-                                        <h2>"extension"</h2>
-        <h3>September 2015</h3>
-<article>
-  <div><a href="https://c9s.github.io/extbook/extension-skeleton">Extension Skeleton</a></div>
-</article>
+                        <article>
+        <header>
+            <h2>Parse Callable Parameter <small>post</small></h2>
+        </header>
+        <div>
+            <p>The code below is from php-src (<code>ext/standard/basic_functions.c</code>)</p>
 
-<div>
-</div>
-                    
+<pre><code class="c">    zval *retval_ptr = NULL;
+    zend_fcall_info fci;
+    zend_fcall_info_cache fci_cache;
+
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "f*", &amp;fci, &amp;fci_cache, &amp;fci.params, &amp;fci.param_count) == FAILURE) {
+        return;
+    }
+
+    fci.retval_ptr_ptr = &amp;retval_ptr;
+
+    if (zend_call_function(&amp;fci, &amp;fci_cache TSRMLS_CC) == SUCCESS &amp;&amp; fci.retval_ptr_ptr &amp;&amp; *fci.retval_ptr_ptr) {
+        COPY_PZVAL_TO_ZVAL(*return_value, *fci.retval_ptr_ptr);
+    }
+
+    if (fci.params) {
+        efree(fci.params);
+    }
+</code></pre>
+
+        </div>
+                
+                    <nav class="article">
+                <ul>
+                                            <li>Next: <a class="next" href="https://c9s.github.io/extbook/args-info" title="Defining ARG_INFO"><span class="title">Defining ARG_INFO</span></a></li>
+                                                                <li>Previous: <a class="previous" href="https://c9s.github.io/extbook/call-user-function" title="call_user_function_ex"><span class="title">call_user_function_ex</span></a></li>
+                                    </ul>
+            </nav>
+            </article>
+
+
+
+
                 </div>
 
                 <div class="col-md-3 sidebar">
