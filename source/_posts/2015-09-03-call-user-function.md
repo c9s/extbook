@@ -2,7 +2,7 @@
 title: calling user functions
 ---
 
-~~~c
+``` .c
 
 // retval_ptr is used for the return value of the function call.
 zval *retval_ptr;
@@ -50,4 +50,4 @@ if (status == SUCCESS && retval_ptr != NULL) {
     Z_TYPE_P(value) = IS_NULL;
 }
 
-~~~
+```
