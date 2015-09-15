@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Home &mdash; PHP Extension Book &mdash; Extension Cookbook!</title>
+        <title>call_user_function_ex &mdash; PHP Extension Book &mdash; Extension Cookbook!</title>
         <meta charset="utf-8">
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <meta name="robots" content="noindex, follow">
-        
+            <meta name="robots" content="index, follow">
+
 
         
         <link href="https://c9s.github.io/extbook/stylesheets/style.css" rel="stylesheet" type="text/css" />
@@ -33,9 +33,9 @@
 
                 <div class="col-md-9">
 
-                                            <article>
+                        <article>
         <header>
-            <h2><a href="https://c9s.github.io/extbook/blog/2015/09/15/call-user-func">call_user_function_ex</a></h2>
+            <h2>call_user_function_ex <small>post</small></h2>
         </header>
         <div>
             <pre><code class="c">    zval *retval_ptr;
@@ -72,65 +72,17 @@
 </code></pre>
 
         </div>
+                
+                    <nav class="article">
+                <ul>
+                                                                <li>Previous: <a class="previous" href="https://c9s.github.io/extbook/blog/2015/09/15/parse-callable-parameter" title="Parse Callable Parameter"><span class="title">Parse Callable Parameter</span></a></li>
+                                    </ul>
+            </nav>
             </article>
-    <article>
-        <header>
-            <h2><a href="https://c9s.github.io/extbook/blog/2015/09/15/parse-callable-parameter">Parse Callable Parameter</a></h2>
-        </header>
-        <div>
-            <p>The code below is from php-src (<code>ext/standard/basic_functions.c</code>)</p>
 
-<pre><code class="c">    zval *retval_ptr = NULL;
-    zend_fcall_info fci;
-    zend_fcall_info_cache fci_cache;
 
-    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "f*", &amp;fci, &amp;fci_cache, &amp;fci.params, &amp;fci.param_count) == FAILURE) {
-        return;
-    }
 
-    fci.retval_ptr_ptr = &amp;retval_ptr;
 
-    if (zend_call_function(&amp;fci, &amp;fci_cache TSRMLS_CC) == SUCCESS &amp;&amp; fci.retval_ptr_ptr &amp;&amp; *fci.retval_ptr_ptr) {
-        COPY_PZVAL_TO_ZVAL(*return_value, *fci.retval_ptr_ptr);
-    }
-
-    if (fci.params) {
-        efree(fci.params);
-    }
-</code></pre>
-
-        </div>
-            </article>
-    <article>
-        <header>
-            <h2><a href="https://c9s.github.io/extbook/blog/2015/09/15/args-info">Defining ARG_INFO</a></h2>
-        </header>
-        <div>
-            <p>The code below presents: <code>($environment, $response)</code></p>
-
-<pre><code class="c">// ZEND_BEGIN_ARG_INFO_EX(name, _unused, return_reference, required_num_args)
-ZEND_BEGIN_ARG_INFO_EX(arginfo_middleware_call, 0, 0, 2)
-    ZEND_ARG_INFO(0, environment)
-    ZEND_ARG_INFO(0, response)
-ZEND_END_ARG_INFO()
-</code></pre>
-
-<p>The code below presents: <code>(array &amp; $environment, array $response)</code></p>
-
-<pre><code class="c">ZEND_BEGIN_ARG_INFO_EX(arginfo_middleware_call, 0, 0, 2)
-    // ZEND_ARG_ARRAY_INFO(pass_by_ref, name, allow_null)
-    ZEND_ARG_ARRAY_INFO(1, environment, 0)
-    ZEND_ARG_ARRAY_INFO(0, response, 0)
-ZEND_END_ARG_INFO()
-</code></pre>
-
-        </div>
-            </article>
-    <nav>
-        <br />
-        <a href="https://c9s.github.io/extbook/page/2">Older Posts</a><br />
-    </nav>
-                    
                 </div>
 
                 <div class="col-md-3 sidebar">
@@ -150,11 +102,6 @@ ZEND_END_ARG_INFO()
                     <h4>Recent Posts</h4>
 
                     <ul class="list-unstyled">
-                                                    <li><a href="/blog/2015/09/15/call-user-func">call_user_function_ex</a></li>
-                                                    <li><a href="/blog/2015/09/15/parse-callable-parameter">Parse Callable Parameter</a></li>
-                                                    <li><a href="/blog/2015/09/15/args-info">Defining ARG_INFO</a></li>
-                                                    <li><a href="/blog/2015/09/14/extension-skeleton">Extension Skeleton</a></li>
-                                                    <li><a href="/blog/2015/09/14/invalid-library">Extension Skeleton</a></li>
                                             </ul>
                 </div>
 

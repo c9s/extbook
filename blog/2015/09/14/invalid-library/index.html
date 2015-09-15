@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Posts Archive &mdash; PHP Extension Book &mdash; Extension Cookbook!</title>
+        <title>Extension Skeleton &mdash; PHP Extension Book &mdash; Extension Cookbook!</title>
         <meta charset="utf-8">
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <meta name="robots" content="noindex, follow">
-        
+            <meta name="robots" content="index, follow">
+
 
         
         <link href="https://c9s.github.io/extbook/stylesheets/style.css" rel="stylesheet" type="text/css" />
@@ -33,26 +33,38 @@
 
                 <div class="col-md-9">
 
-                                        <h2>Posts Archive</h2>
-        <h3>September 2015</h3>
-  <div>
-    <a href="https://c9s.github.io/extbook/blog/2015/09/15/call-user-func">call_user_function_ex</a>
-  </div>
-  <div>
-    <a href="https://c9s.github.io/extbook/blog/2015/09/15/parse-callable-parameter">Parse Callable Parameter</a>
-  </div>
-  <div>
-    <a href="https://c9s.github.io/extbook/blog/2015/09/15/args-info">Defining ARG_INFO</a>
-  </div>
-  <div>
-    <a href="https://c9s.github.io/extbook/blog/2015/09/14/extension-skeleton">Extension Skeleton</a>
-  </div>
-  <div>
-    <a href="https://c9s.github.io/extbook/blog/2015/09/14/invalid-library">Extension Skeleton</a>
-  </div>
+                        <article>
+        <header>
+            <h2>Extension Skeleton <small>post</small></h2>
+        </header>
+        <div>
+            <p>If you encountered this error while running <code>make test</code> or loading extension:</p>
 
-<div>
-</div>                    
+<pre><code>PHP Warning:  PHP Startup: Invalid library (maybe not a PHP library) 'phpsgi.so' in Unknown on line 0
+</code></pre>
+
+<p>Be sure to check you defined this:</p>
+
+<pre><code class="c">#if COMPILE_DL_FOO
+ZEND_GET_MODULE(foo)
+#endif
+</code></pre>
+
+        </div>
+                    <p class="categories">
+            Categories:
+                        <a href="https://c9s.github.io/extbook/blog/categories/troubleshooting">troubleshooting</a>                        </p>
+                
+                    <nav class="article">
+                <ul>
+                                            <li>Next: <a class="next" href="https://c9s.github.io/extbook/blog/2015/09/14/extension-skeleton" title="Extension Skeleton"><span class="title">Extension Skeleton</span></a></li>
+                                                        </ul>
+            </nav>
+            </article>
+
+
+
+
                 </div>
 
                 <div class="col-md-3 sidebar">
@@ -72,11 +84,6 @@
                     <h4>Recent Posts</h4>
 
                     <ul class="list-unstyled">
-                                                    <li><a href="/blog/2015/09/15/call-user-func">call_user_function_ex</a></li>
-                                                    <li><a href="/blog/2015/09/15/parse-callable-parameter">Parse Callable Parameter</a></li>
-                                                    <li><a href="/blog/2015/09/15/args-info">Defining ARG_INFO</a></li>
-                                                    <li><a href="/blog/2015/09/14/extension-skeleton">Extension Skeleton</a></li>
-                                                    <li><a href="/blog/2015/09/14/invalid-library">Extension Skeleton</a></li>
                                             </ul>
                 </div>
 

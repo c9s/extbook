@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Home &mdash; PHP Extension Book &mdash; Extension Cookbook!</title>
+        <title>Defining ARG_INFO &mdash; PHP Extension Book &mdash; Extension Cookbook!</title>
         <meta charset="utf-8">
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <meta name="robots" content="noindex, follow">
-        
+            <meta name="robots" content="index, follow">
+
 
         
         <link href="https://c9s.github.io/extbook/stylesheets/style.css" rel="stylesheet" type="text/css" />
@@ -33,77 +33,9 @@
 
                 <div class="col-md-9">
 
-                                            <article>
+                        <article>
         <header>
-            <h2><a href="https://c9s.github.io/extbook/blog/2015/09/15/call-user-func">call_user_function_ex</a></h2>
-        </header>
-        <div>
-            <pre><code class="c">    zval *retval_ptr;
-    zval ***args;
-    int status;
-    zval *option_array;
-
-    if (!option_array || !zend_is_callable(option_array, IS_CALLABLE_CHECK_NO_ACCESS, NULL TSRMLS_CC)) {
-        php_error_docref(NULL TSRMLS_CC, E_WARNING, "First argument is expected to be a valid callback");
-        zval_dtor(value);
-        Z_TYPE_P(value) = IS_NULL;
-        return;
-    }
-
-    args = safe_emalloc(sizeof(zval **), 1, 0);
-    args[0] = &amp;value;
-
-    // function table, object ptr, option_array = callback, n_params, params
-    status = call_user_function_ex(EG(function_table), NULL, option_array, &amp;retval_ptr, 1, args, 0, NULL TSRMLS_CC);
-
-    if (status == SUCCESS &amp;&amp; retval_ptr != NULL) {
-        if (retval_ptr != value) {
-            zval_dtor(value);
-            COPY_PZVAL_TO_ZVAL(*value, retval_ptr);
-        } else {
-            zval_ptr_dtor(&amp;retval_ptr);
-        }
-    } else {
-        zval_dtor(value);
-        Z_TYPE_P(value) = IS_NULL;
-    }
-
-    efree(args);
-</code></pre>
-
-        </div>
-            </article>
-    <article>
-        <header>
-            <h2><a href="https://c9s.github.io/extbook/blog/2015/09/15/parse-callable-parameter">Parse Callable Parameter</a></h2>
-        </header>
-        <div>
-            <p>The code below is from php-src (<code>ext/standard/basic_functions.c</code>)</p>
-
-<pre><code class="c">    zval *retval_ptr = NULL;
-    zend_fcall_info fci;
-    zend_fcall_info_cache fci_cache;
-
-    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "f*", &amp;fci, &amp;fci_cache, &amp;fci.params, &amp;fci.param_count) == FAILURE) {
-        return;
-    }
-
-    fci.retval_ptr_ptr = &amp;retval_ptr;
-
-    if (zend_call_function(&amp;fci, &amp;fci_cache TSRMLS_CC) == SUCCESS &amp;&amp; fci.retval_ptr_ptr &amp;&amp; *fci.retval_ptr_ptr) {
-        COPY_PZVAL_TO_ZVAL(*return_value, *fci.retval_ptr_ptr);
-    }
-
-    if (fci.params) {
-        efree(fci.params);
-    }
-</code></pre>
-
-        </div>
-            </article>
-    <article>
-        <header>
-            <h2><a href="https://c9s.github.io/extbook/blog/2015/09/15/args-info">Defining ARG_INFO</a></h2>
+            <h2>Defining ARG_INFO <small>post</small></h2>
         </header>
         <div>
             <p>The code below presents: <code>($environment, $response)</code></p>
@@ -125,12 +57,18 @@ ZEND_END_ARG_INFO()
 </code></pre>
 
         </div>
+                
+                    <nav class="article">
+                <ul>
+                                            <li>Next: <a class="next" href="https://c9s.github.io/extbook/blog/2015/09/15/parse-callable-parameter" title="Parse Callable Parameter"><span class="title">Parse Callable Parameter</span></a></li>
+                                                                <li>Previous: <a class="previous" href="https://c9s.github.io/extbook/blog/2015/09/14/extension-skeleton" title="Extension Skeleton"><span class="title">Extension Skeleton</span></a></li>
+                                    </ul>
+            </nav>
             </article>
-    <nav>
-        <br />
-        <a href="https://c9s.github.io/extbook/page/2">Older Posts</a><br />
-    </nav>
-                    
+
+
+
+
                 </div>
 
                 <div class="col-md-3 sidebar">
@@ -150,11 +88,6 @@ ZEND_END_ARG_INFO()
                     <h4>Recent Posts</h4>
 
                     <ul class="list-unstyled">
-                                                    <li><a href="/blog/2015/09/15/call-user-func">call_user_function_ex</a></li>
-                                                    <li><a href="/blog/2015/09/15/parse-callable-parameter">Parse Callable Parameter</a></li>
-                                                    <li><a href="/blog/2015/09/15/args-info">Defining ARG_INFO</a></li>
-                                                    <li><a href="/blog/2015/09/14/extension-skeleton">Extension Skeleton</a></li>
-                                                    <li><a href="/blog/2015/09/14/invalid-library">Extension Skeleton</a></li>
                                             </ul>
                 </div>
 
