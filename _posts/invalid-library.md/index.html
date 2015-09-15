@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Categories &mdash; PHP Extension Book &mdash; Extension Cookbook!</title>
+        <title>Extension Skeleton &mdash; PHP Extension Book &mdash; Extension Cookbook!</title>
         <meta charset="utf-8">
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <meta name="robots" content="noindex, follow">
-        
+            <meta name="robots" content="index, follow">
+
 
         
         <link href="https://c9s.github.io/extbook/stylesheets/style.css" rel="stylesheet" type="text/css" />
@@ -33,12 +33,39 @@
 
                 <div class="col-md-9">
 
-                                        <h2>Categories</h2>
+                        <article>
+        <header>
+            <h2>Extension Skeleton <small>post</small></h2>
+        </header>
+        <div>
+            <p>If you encountered this error while running <code>make test</code> or loading extension:</p>
 
-<div>
-<a href="https://c9s.github.io/extbook/blog/categories/extension">extension</a>
-<a href="https://c9s.github.io/extbook/blog/categories/troubleshooting">troubleshooting</a>
-</div>                    
+<pre><code>PHP Warning:  PHP Startup: Invalid library (maybe not a PHP library) 'phpsgi.so' in Unknown on line 0
+</code></pre>
+
+<p>Be sure to check you defined this:</p>
+
+<pre><code class="c">#if COMPILE_DL_FOO
+ZEND_GET_MODULE(foo)
+#endif
+</code></pre>
+
+        </div>
+                    <p class="categories">
+            Categories:
+                        <a href="https://c9s.github.io/extbook/blog/categories/troubleshooting">troubleshooting</a>                        </p>
+                
+                    <nav class="article">
+                <ul>
+                                            <li>Next: <a class="next" href="https://c9s.github.io/extbook/_posts/extension-skeleton.md" title="Extension Skeleton"><span class="title">Extension Skeleton</span></a></li>
+                                                                <li>Previous: <a class="previous" href="https://c9s.github.io/extbook/_posts/parse-callable-parameter.md" title="Parse Callable Parameter"><span class="title">Parse Callable Parameter</span></a></li>
+                                    </ul>
+            </nav>
+            </article>
+
+
+
+
                 </div>
 
                 <div class="col-md-3 sidebar">

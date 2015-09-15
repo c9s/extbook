@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Categories &mdash; PHP Extension Book &mdash; Extension Cookbook!</title>
+        <title>call_user_function_ex &mdash; PHP Extension Book &mdash; Extension Cookbook!</title>
         <meta charset="utf-8">
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <meta name="robots" content="noindex, follow">
-        
+            <meta name="robots" content="index, follow">
+
 
         
         <link href="https://c9s.github.io/extbook/stylesheets/style.css" rel="stylesheet" type="text/css" />
@@ -33,12 +33,57 @@
 
                 <div class="col-md-9">
 
-                                        <h2>Categories</h2>
+                        <article>
+        <header>
+            <h2>call_user_function_ex <small>post</small></h2>
+        </header>
+        <div>
+            <pre><code class="c">    zval *retval_ptr;
+    zval ***args;
+    int status;
+    zval *option_array;
 
-<div>
-<a href="https://c9s.github.io/extbook/blog/categories/extension">extension</a>
-<a href="https://c9s.github.io/extbook/blog/categories/troubleshooting">troubleshooting</a>
-</div>                    
+    if (!option_array || !zend_is_callable(option_array, IS_CALLABLE_CHECK_NO_ACCESS, NULL TSRMLS_CC)) {
+        php_error_docref(NULL TSRMLS_CC, E_WARNING, "First argument is expected to be a valid callback");
+        zval_dtor(value);
+        Z_TYPE_P(value) = IS_NULL;
+        return;
+    }
+
+    args = safe_emalloc(sizeof(zval **), 1, 0);
+    args[0] = &amp;value;
+
+    // function table, object ptr, option_array = callback, n_params, params
+    status = call_user_function_ex(EG(function_table), NULL, option_array, &amp;retval_ptr, 1, args, 0, NULL TSRMLS_CC);
+
+    if (status == SUCCESS &amp;&amp; retval_ptr != NULL) {
+        if (retval_ptr != value) {
+            zval_dtor(value);
+            COPY_PZVAL_TO_ZVAL(*value, retval_ptr);
+        } else {
+            zval_ptr_dtor(&amp;retval_ptr);
+        }
+    } else {
+        zval_dtor(value);
+        Z_TYPE_P(value) = IS_NULL;
+    }
+
+    efree(args);
+</code></pre>
+
+        </div>
+                
+                    <nav class="article">
+                <ul>
+                                            <li>Next: <a class="next" href="https://c9s.github.io/extbook/_posts/args-info.md" title="Defining ARG_INFO"><span class="title">Defining ARG_INFO</span></a></li>
+                                                                <li>Previous: <a class="previous" href="https://c9s.github.io/extbook/_posts/extension-skeleton.md" title="Extension Skeleton"><span class="title">Extension Skeleton</span></a></li>
+                                    </ul>
+            </nav>
+            </article>
+
+
+
+
                 </div>
 
                 <div class="col-md-3 sidebar">

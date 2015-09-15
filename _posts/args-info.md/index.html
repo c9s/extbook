@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Categories &mdash; PHP Extension Book &mdash; Extension Cookbook!</title>
+        <title>Defining ARG_INFO &mdash; PHP Extension Book &mdash; Extension Cookbook!</title>
         <meta charset="utf-8">
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <meta name="robots" content="noindex, follow">
-        
+            <meta name="robots" content="index, follow">
+
 
         
         <link href="https://c9s.github.io/extbook/stylesheets/style.css" rel="stylesheet" type="text/css" />
@@ -33,12 +33,41 @@
 
                 <div class="col-md-9">
 
-                                        <h2>Categories</h2>
+                        <article>
+        <header>
+            <h2>Defining ARG_INFO <small>post</small></h2>
+        </header>
+        <div>
+            <p>The code below presents: <code>($environment, $response)</code></p>
 
-<div>
-<a href="https://c9s.github.io/extbook/blog/categories/extension">extension</a>
-<a href="https://c9s.github.io/extbook/blog/categories/troubleshooting">troubleshooting</a>
-</div>                    
+<pre><code class="c">// ZEND_BEGIN_ARG_INFO_EX(name, _unused, return_reference, required_num_args)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_middleware_call, 0, 0, 2)
+    ZEND_ARG_INFO(0, environment)
+    ZEND_ARG_INFO(0, response)
+ZEND_END_ARG_INFO()
+</code></pre>
+
+<p>The code below presents: <code>(array &amp; $environment, array $response)</code></p>
+
+<pre><code class="c">ZEND_BEGIN_ARG_INFO_EX(arginfo_middleware_call, 0, 0, 2)
+    // ZEND_ARG_ARRAY_INFO(pass_by_ref, name, allow_null)
+    ZEND_ARG_ARRAY_INFO(1, environment, 0)
+    ZEND_ARG_ARRAY_INFO(0, response, 0)
+ZEND_END_ARG_INFO()
+</code></pre>
+
+        </div>
+                
+                    <nav class="article">
+                <ul>
+                                                                <li>Previous: <a class="previous" href="https://c9s.github.io/extbook/_posts/call-user-function.md" title="call_user_function_ex"><span class="title">call_user_function_ex</span></a></li>
+                                    </ul>
+            </nav>
+            </article>
+
+
+
+
                 </div>
 
                 <div class="col-md-3 sidebar">

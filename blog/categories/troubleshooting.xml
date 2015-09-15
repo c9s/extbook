@@ -3,14 +3,14 @@
     <title><![CDATA[PHP Extension Book]]></title>
     <link href="https://c9s.github.io/extbook/blog/categories/troubleshooting.xml" rel="self"/>
     <link href="https://c9s.github.io/extbook/"/>
-    <updated>2015-09-15T16:59:40+08:00</updated>
+    <updated>2015-09-15T17:02:32+08:00</updated>
     <id>https://c9s.github.io/extbook/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
             <entry>
             <title type="html"><![CDATA[Extension Skeleton]]></title>
-            <link href="https://c9s.github.io/extbook/blog/2015/09/14/invalid-library"/>
-            <updated>2015-09-14T00:00:00+08:00</updated>
-            <id>https://c9s.github.io/extbook/blog/2015/09/14/invalid-library</id>
+            <link href="https://c9s.github.io/extbook/_posts/invalid-library.md"/>
+            <updated>2015-09-15T17:02:32+08:00</updated>
+            <id>https://c9s.github.io/extbook/_posts/invalid-library.md</id>
             <content type="html"><![CDATA[<p>If you encountered this error while running <code>make test</code> or loading extension:</p>
 
 <pre><code>PHP Warning:  PHP Startup: Invalid library (maybe not a PHP library) 'phpsgi.so' in Unknown on line 0
