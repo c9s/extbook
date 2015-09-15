@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>call_user_function_ex &mdash; PHP Extension Book &mdash; Extension Cookbook!</title>
+        <title>calling user functions &mdash; PHP Extension Book &mdash; Extension Cookbook!</title>
         <meta charset="utf-8">
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,40 +35,55 @@
 
                         <article>
         <header>
-            <h2>call_user_function_ex <small>post</small></h2>
+            <h2>calling user functions <small>post</small></h2>
         </header>
         <div>
-            <pre><code class="c">    zval *retval_ptr;
-    zval ***args;
-    int status;
-    zval *option_array;
+            <pre><code class="c"><br />// retval_ptr is used for the return value of the function call.
+zval *retval_ptr;
 
-    if (!option_array || !zend_is_callable(option_array, IS_CALLABLE_CHECK_NO_ACCESS, NULL TSRMLS_CC)) {
-        php_error_docref(NULL TSRMLS_CC, E_WARNING, "First argument is expected to be a valid callback");
+// params for the function call.
+zval ***params;
+
+// just one parameter
+int n_params = 1;
+
+// status is used for detecting function call's return status 
+int status;
+
+// the function call (callback)
+zval *cb_array;
+
+if (!cb_array || !zend_is_callable(cb_array, IS_CALLABLE_CHECK_NO_ACCESS, NULL TSRMLS_CC)) {
+    php_error_docref(NULL TSRMLS_CC, E_WARNING, "First argument is expected to be a valid callback");
+    zval_dtor(value);
+    Z_TYPE_P(value) = IS_NULL;
+    return;
+}
+
+params = safe_emalloc(sizeof(zval **), n_params, 0);
+params[0] = &amp;value;
+
+
+// You can replace EG(function_table) with the function table of a class entry if you're calling a class method.
+/* function table, object ptr, cb_array = callback, n_params, params */
+status = call_user_function_ex(EG(function_table), NULL, cb_array, &amp;retval_ptr, n_params, params, 0, NULL TSRMLS_CC);
+
+// free the params
+efree(params);
+
+// copy retval zval to the zval we need to use.
+if (status == SUCCESS &amp;&amp; retval_ptr != NULL) {
+    if (retval_ptr != value) {
         zval_dtor(value);
-        Z_TYPE_P(value) = IS_NULL;
-        return;
-    }
-
-    args = safe_emalloc(sizeof(zval **), 1, 0);
-    args[0] = &amp;value;
-
-    // function table, object ptr, option_array = callback, n_params, params
-    status = call_user_function_ex(EG(function_table), NULL, option_array, &amp;retval_ptr, 1, args, 0, NULL TSRMLS_CC);
-
-    if (status == SUCCESS &amp;&amp; retval_ptr != NULL) {
-        if (retval_ptr != value) {
-            zval_dtor(value);
-            COPY_PZVAL_TO_ZVAL(*value, retval_ptr);
-        } else {
-            zval_ptr_dtor(&amp;retval_ptr);
-        }
+        COPY_PZVAL_TO_ZVAL(*value, retval_ptr);
     } else {
-        zval_dtor(value);
-        Z_TYPE_P(value) = IS_NULL;
+        zval_ptr_dtor(&amp;retval_ptr);
     }
+} else {
+    zval_dtor(value);
+    Z_TYPE_P(value) = IS_NULL;
+}
 
-    efree(args);
 </code></pre>
 
         </div>
