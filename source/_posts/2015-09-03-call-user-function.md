@@ -2,7 +2,7 @@
 title: calling user functions
 ---
 
-``` .c
+``` .cpp
 
 // retval_ptr is used for the return value of the function call.
 zval *retval_ptr;
