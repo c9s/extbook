@@ -3,9 +3,40 @@
     <title><![CDATA[PHP Extension Book]]></title>
     <link href="https://c9s.github.io/extbook/atom.xml" rel="self"/>
     <link href="https://c9s.github.io/extbook/"/>
-    <updated>2015-09-15T17:22:27+08:00</updated>
+    <updated>2015-09-19T21:10:06+08:00</updated>
     <id>https://c9s.github.io/extbook/</id>
         <generator uri="http://sculpin.io/">Sculpin</generator>
+            <entry>
+            <title type="html"><![CDATA[Defining ARG_INFO for object parameters]]></title>
+            <link href="https://c9s.github.io/extbook/args-info-object"/>
+            <updated>2015-09-05T00:00:00+08:00</updated>
+            <id>https://c9s.github.io/extbook/args-info-object</id>
+            <content type="html"><![CDATA[<pre><code class="cpp">// ZEND_ARG_OBJ_INFO(pass_by_ref, name, classname, allow_null)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_test, 0, 0, 3)
+    ZEND_ARG_INFO(0, firstArg)
+    ZEND_ARG_OBJ_INFO(0, objStdClassNonNull, stdClass, 0)
+    ZEND_ARG_OBJ_INFO(0, objStdClass, stdClass, 1)
+    ZEND_ARG_OBJ_INFO(1, objStdClassByRef, stdClass, 1)
+ZEND_END_ARG_INFO()
+</code></pre>
+
+<p>The code above creates the following function prototype:</p>
+
+<pre><code class="php"><br />function sample_with_types($firstArg, stdClass $objStdClassNonNull, stdClass $objStdClass = null, stdClass &amp; $objStdClassByRef) {
+    // ...
+}
+</code></pre>
+
+<p>It has the following effects:</p>
+
+<pre><code class="cpp">sample_with_types();                          // ok
+sample_with_types(1, null);                   // error: arg #2 should be stdClass
+sample_with_types(1, new stdClass, null);     // ok
+sample_with_types(1, new stdClass, 1);        // error: arg #3 should be stdClass
+sample_with_types(1, new stdClass, null, 2);  // error: arg #4 must be reference
+</code></pre>
+]]></content>
+        </entry>
             <entry>
             <title type="html"><![CDATA[Defining ARG_INFO]]></title>
             <link href="https://c9s.github.io/extbook/args-info"/>
@@ -13,7 +44,7 @@
             <id>https://c9s.github.io/extbook/args-info</id>
             <content type="html"><![CDATA[<p>The code below presents: <code>($environment, $response)</code></p>
 
-<pre><code class="c">// ZEND_BEGIN_ARG_INFO_EX(name, _unused, return_reference, required_num_args)
+<pre><code class="cpp">// ZEND_BEGIN_ARG_INFO_EX(name, _unused, return_reference, required_num_args)
 ZEND_BEGIN_ARG_INFO_EX(arginfo_middleware_call, 0, 0, 2)
     ZEND_ARG_INFO(0, environment)
     ZEND_ARG_INFO(0, response)
@@ -22,7 +53,7 @@ ZEND_END_ARG_INFO()
 
 <p>The code below presents: <code>(array &amp; $environment, array $response)</code></p>
 
-<pre><code class="c">ZEND_BEGIN_ARG_INFO_EX(arginfo_middleware_call, 0, 0, 2)
+<pre><code class="cpp">ZEND_BEGIN_ARG_INFO_EX(arginfo_middleware_call, 0, 0, 2)
     // ZEND_ARG_ARRAY_INFO(pass_by_ref, name, allow_null)
     ZEND_ARG_ARRAY_INFO(1, environment, 0)
     ZEND_ARG_ARRAY_INFO(0, response, 0)

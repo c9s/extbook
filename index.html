@@ -35,12 +35,44 @@
 
                                             <article>
         <header>
+            <h2><a href="https://c9s.github.io/extbook/args-info-object">Defining ARG_INFO for object parameters</a></h2>
+        </header>
+        <div>
+            <pre><code class="cpp">// ZEND_ARG_OBJ_INFO(pass_by_ref, name, classname, allow_null)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_test, 0, 0, 3)
+    ZEND_ARG_INFO(0, firstArg)
+    ZEND_ARG_OBJ_INFO(0, objStdClassNonNull, stdClass, 0)
+    ZEND_ARG_OBJ_INFO(0, objStdClass, stdClass, 1)
+    ZEND_ARG_OBJ_INFO(1, objStdClassByRef, stdClass, 1)
+ZEND_END_ARG_INFO()
+</code></pre>
+
+<p>The code above creates the following function prototype:</p>
+
+<pre><code class="php"><br />function sample_with_types($firstArg, stdClass $objStdClassNonNull, stdClass $objStdClass = null, stdClass &amp; $objStdClassByRef) {
+    // ...
+}
+</code></pre>
+
+<p>It has the following effects:</p>
+
+<pre><code class="cpp">sample_with_types();                          // ok
+sample_with_types(1, null);                   // error: arg #2 should be stdClass
+sample_with_types(1, new stdClass, null);     // ok
+sample_with_types(1, new stdClass, 1);        // error: arg #3 should be stdClass
+sample_with_types(1, new stdClass, null, 2);  // error: arg #4 must be reference
+</code></pre>
+
+        </div>
+            </article>
+    <article>
+        <header>
             <h2><a href="https://c9s.github.io/extbook/args-info">Defining ARG_INFO</a></h2>
         </header>
         <div>
             <p>The code below presents: <code>($environment, $response)</code></p>
 
-<pre><code class="c">// ZEND_BEGIN_ARG_INFO_EX(name, _unused, return_reference, required_num_args)
+<pre><code class="cpp">// ZEND_BEGIN_ARG_INFO_EX(name, _unused, return_reference, required_num_args)
 ZEND_BEGIN_ARG_INFO_EX(arginfo_middleware_call, 0, 0, 2)
     ZEND_ARG_INFO(0, environment)
     ZEND_ARG_INFO(0, response)
@@ -49,7 +81,7 @@ ZEND_END_ARG_INFO()
 
 <p>The code below presents: <code>(array &amp; $environment, array $response)</code></p>
 
-<pre><code class="c">ZEND_BEGIN_ARG_INFO_EX(arginfo_middleware_call, 0, 0, 2)
+<pre><code class="cpp">ZEND_BEGIN_ARG_INFO_EX(arginfo_middleware_call, 0, 0, 2)
     // ZEND_ARG_ARRAY_INFO(pass_by_ref, name, allow_null)
     ZEND_ARG_ARRAY_INFO(1, environment, 0)
     ZEND_ARG_ARRAY_INFO(0, response, 0)
@@ -86,61 +118,6 @@ ZEND_END_ARG_INFO()
 
         </div>
             </article>
-    <article>
-        <header>
-            <h2><a href="https://c9s.github.io/extbook/call-user-function">calling user functions</a></h2>
-        </header>
-        <div>
-            <pre><code class="cpp"><br />// retval_ptr is used for the return value of the function call.
-zval *retval_ptr;
-
-// params for the function call.
-zval ***params;
-
-// just one parameter
-int n_params = 1;
-
-// status is used for detecting function call's return status 
-int status;
-
-// the function call (callback)
-zval *cb_array;
-
-if (!cb_array || !zend_is_callable(cb_array, IS_CALLABLE_CHECK_NO_ACCESS, NULL TSRMLS_CC)) {
-    php_error_docref(NULL TSRMLS_CC, E_WARNING, "First argument is expected to be a valid callback");
-    zval_dtor(value);
-    Z_TYPE_P(value) = IS_NULL;
-    return;
-}
-
-params = safe_emalloc(sizeof(zval **), n_params, 0);
-params[0] = &amp;value;
-
-
-// You can replace EG(function_table) with the function table of a class entry if you're calling a class method.
-/* function table, object ptr, cb_array = callback, n_params, params */
-status = call_user_function_ex(EG(function_table), NULL, cb_array, &amp;retval_ptr, n_params, params, 0, NULL TSRMLS_CC);
-
-// free the params
-efree(params);
-
-// copy retval zval to the zval we need to use.
-if (status == SUCCESS &amp;&amp; retval_ptr != NULL) {
-    if (retval_ptr != value) {
-        zval_dtor(value);
-        COPY_PZVAL_TO_ZVAL(*value, retval_ptr);
-    } else {
-        zval_ptr_dtor(&amp;retval_ptr);
-    }
-} else {
-    zval_dtor(value);
-    Z_TYPE_P(value) = IS_NULL;
-}
-
-</code></pre>
-
-        </div>
-            </article>
     <nav>
         <br />
         <a href="https://c9s.github.io/extbook/page/2">Older Posts</a><br />
@@ -165,6 +142,7 @@ if (status == SUCCESS &amp;&amp; retval_ptr != NULL) {
                     <h4>Recent Posts</h4>
 
                     <ul class="list-unstyled">
+                                                    <li><a href="/args-info-object">Defining ARG_INFO for object parameters</a></li>
                                                     <li><a href="/args-info">Defining ARG_INFO</a></li>
                                                     <li><a href="/parse-callable-parameter">Parse Callable Parameter</a></li>
                                                     <li><a href="/call-user-function">calling user functions</a></li>

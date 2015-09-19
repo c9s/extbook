@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Defining ARG_INFO for object parameters &mdash; PHP Extension Book &mdash; Extension Cookbook!</title>
+        <meta charset="utf-8">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="robots" content="index, follow">
+
+
+        
+        <link href="https://c9s.github.io/extbook/stylesheets/style.css" rel="stylesheet" type="text/css" />
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+        <link rel="stylesheet" href="https://c9s.github.io/extbook/components/highlightjs/styles/github.css" />
+        <link rel="alternate" type="application/atom+xml" href="https://c9s.github.io/extbook/atom.xml" title="PHP Extension Book activity feed" />
+        <style>
+        /** quick fix because bootstrap <pre> has a background-color. */
+        pre code { background-color: inherit; }
+
+        </style>
+                                    </head>
+    <body>
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-9">
+
+                        <article>
+        <header>
+            <h2>Defining ARG_INFO for object parameters <small>post</small></h2>
+        </header>
+        <div>
+            <pre><code class="cpp">// ZEND_ARG_OBJ_INFO(pass_by_ref, name, classname, allow_null)
+ZEND_BEGIN_ARG_INFO_EX(arginfo_test, 0, 0, 3)
+    ZEND_ARG_INFO(0, firstArg)
+    ZEND_ARG_OBJ_INFO(0, objStdClassNonNull, stdClass, 0)
+    ZEND_ARG_OBJ_INFO(0, objStdClass, stdClass, 1)
+    ZEND_ARG_OBJ_INFO(1, objStdClassByRef, stdClass, 1)
+ZEND_END_ARG_INFO()
+</code></pre>
+
+<p>The code above creates the following function prototype:</p>
+
+<pre><code class="php"><br />function sample_with_types($firstArg, stdClass $objStdClassNonNull, stdClass $objStdClass = null, stdClass &amp; $objStdClassByRef) {
+    // ...
+}
+</code></pre>
+
+<p>It has the following effects:</p>
+
+<pre><code class="cpp">sample_with_types();                          // ok
+sample_with_types(1, null);                   // error: arg #2 should be stdClass
+sample_with_types(1, new stdClass, null);     // ok
+sample_with_types(1, new stdClass, 1);        // error: arg #3 should be stdClass
+sample_with_types(1, new stdClass, null, 2);  // error: arg #4 must be reference
+</code></pre>
+
+        </div>
+                
+                    <nav class="article">
+                <ul>
+                                                                <li>Previous: <a class="previous" href="https://c9s.github.io/extbook/args-info" title="Defining ARG_INFO"><span class="title">Defining ARG_INFO</span></a></li>
+                                    </ul>
+            </nav>
+            </article>
+
+
+
+
+                </div>
+
+                <div class="col-md-3 sidebar">
+
+                    <h3>
+                        <a href="https://c9s.github.io/extbook/">PHP Extension Book</a>
+                    </h3>
+
+                    <ul class="list-unstyled">
+                        <li><a href="https://c9s.github.io/extbook/blog/categories">Categories</a></li>
+                        <li><a href="https://c9s.github.io/extbook/blog/tags">Tags</a></li>
+                        <li><a href="https://c9s.github.io/extbook/blog">Posts Archive</a></li>
+                        <li><a href="https://c9s.github.io/extbook/about">About</a></li>
+                    </ul>
+
+
+                    <h4>Recent Posts</h4>
+
+                    <ul class="list-unstyled">
+                                            </ul>
+                </div>
+
+            </div>
+
+            <div class="well">
+                <h3>PHP Extension Book <small>Extension Cookbook!</small></h3>
+            </div>
+
+            <div class="well">
+                                <h4>Powered By</h4>
+                <ul class="list-unstyled">
+                    <li><a href="http://sculpin.io">sculpin.io</a></li>
+                    <li><a href="http://twitter.com/getsculpin">@getsculpin</a></li>
+                </ul>
+            </div>
+
+            <footer>
+                &copy; 2015 PHP Extension Book
+            </footer>
+        </div>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="https://c9s.github.io/extbook/components/jquery/jquery.min.js"><\/script>')</script>
+                
+                <script src="https://c9s.github.io/extbook/components/highlightjs/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+                    </body>
+</html>

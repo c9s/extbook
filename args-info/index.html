@@ -40,7 +40,7 @@
         <div>
             <p>The code below presents: <code>($environment, $response)</code></p>
 
-<pre><code class="c">// ZEND_BEGIN_ARG_INFO_EX(name, _unused, return_reference, required_num_args)
+<pre><code class="cpp">// ZEND_BEGIN_ARG_INFO_EX(name, _unused, return_reference, required_num_args)
 ZEND_BEGIN_ARG_INFO_EX(arginfo_middleware_call, 0, 0, 2)
     ZEND_ARG_INFO(0, environment)
     ZEND_ARG_INFO(0, response)
@@ -49,7 +49,7 @@ ZEND_END_ARG_INFO()
 
 <p>The code below presents: <code>(array &amp; $environment, array $response)</code></p>
 
-<pre><code class="c">ZEND_BEGIN_ARG_INFO_EX(arginfo_middleware_call, 0, 0, 2)
+<pre><code class="cpp">ZEND_BEGIN_ARG_INFO_EX(arginfo_middleware_call, 0, 0, 2)
     // ZEND_ARG_ARRAY_INFO(pass_by_ref, name, allow_null)
     ZEND_ARG_ARRAY_INFO(1, environment, 0)
     ZEND_ARG_ARRAY_INFO(0, response, 0)
@@ -60,6 +60,7 @@ ZEND_END_ARG_INFO()
                 
                     <nav class="article">
                 <ul>
+                                            <li>Next: <a class="next" href="https://c9s.github.io/extbook/args-info-object" title="Defining ARG_INFO for object parameters"><span class="title">Defining ARG_INFO for object parameters</span></a></li>
                                                                 <li>Previous: <a class="previous" href="https://c9s.github.io/extbook/parse-callable-parameter" title="Parse Callable Parameter"><span class="title">Parse Callable Parameter</span></a></li>
                                     </ul>
             </nav>
