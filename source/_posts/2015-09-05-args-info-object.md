@@ -13,3 +13,13 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_test, 0, 0, 3)
     ZEND_ARG_OBJ_INFO(1, objStdClassByRef, stdClass, 1)
 ZEND_END_ARG_INFO()
 ~~~
+
+It has the following effects:
+
+~~~ .cpp
+sample_with_types();                          // ok
+sample_with_types(1, null);                   // error: arg #2 should be stdClass
+sample_with_types(1, new stdClass, null);     // ok
+sample_with_types(1, new stdClass, 1);        // error: arg #3 should be stdClass
+sample_with_types(1, new stdClass, null, 2);  // error: arg #4 must be reference
+~~~
